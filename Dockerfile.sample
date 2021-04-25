@@ -1,0 +1,8 @@
+FROM openjdk:11-jre-slim
+ARG DISTRO_NAME=${DISTRO_NAME}
+COPY $DISTRO_NAME /$DISTRO_NAME
+COPY start.sh /start.sh
+VOLUME ["/data","/logs"]
+ENV KAFKA_HOME=/$DISTRO_NAME 
+WORKDIR /$DISTRO_NAME
+CMD ["/start.sh"]
